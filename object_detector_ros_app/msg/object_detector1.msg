@@ -1,2 +1,0 @@
-string nomA
-string humeurA
