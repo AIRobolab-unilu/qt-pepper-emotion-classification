@@ -1,6 +1,6 @@
-# qt-pepper-emotion-classification
+# QT and Pepper emotion classification
 
-This repository aims to perform emotion classification and object recognition with the QT robot and Pepper in order to have a better understanding of the human-robot interacton context. 
+This repository aims to perform emotion classification with the QT robot and Pepper in order to have a better understanding of the human-robot interacton context. 
 
 ## Getting Started
 
@@ -119,49 +119,6 @@ Here is an example :
 
 To run the camera to feed the image topic, you can run in another terminal the command : `rosrun cv_camera cv_camera`
 
-## The darknet_ros package
-
-This package is used to perform object recognition with the QT robot and Pepper.
-
-### Prerequisites
-
-If you don't have a node publishing the camera images in a specific topic, you may also have to install a ROS package that can open the camera ([cv_camera](https://github.com/OTL/cv_camera)).
-
-
-### Installing and running
-
-To run it, go to the catkin main folder of the face classification package and then run these commands :
-
-- Compile the package using the catkin_make command and report the modification of the workspace to ROS by sourcing the setup.bash
-
-```
-~/catkin_ws$ catkin_make --pkg darknet_ros
-~/catkin_ws$ source devel/setup.bash
-```
-
-- Then just run the launch file
-
-```
-~/catkin_ws$ roslaunch darknet_ros darknet_ros.launch
-```
-
-- Run the camera in another terminal and you should see a window displaying the recognized objects
-
-```
-~/catkin_ws$ rosrun cv_camera cv_camera
-
-```
-
-- If you already have a node publishing the camera images in a specific topic, use the following option to specify the name of your topic.
-
-```
-~/catkin_ws$ roslaunch darknet_ros darknet_ros.launch input_camera_topic:=yourTopicName
-```
-
-- If you want to visualize the resulting images from the detection remotely, use this topic **/darknet_ros/detection_image** (see the readme [here](https://github.com/leggedrobotics/darknet_ros/blob/master/README.md) for more details). You can view it with the command : 
-
-`rosrun image_view image_view image:=/darknet_ros/detection_image`
-
 
 ## Contributing
 
@@ -180,7 +137,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 This is a non-exhaustive list of the people whose codes were used to achieve this project :
 
 * Octavio Arriaga ([face classification package](https://github.com/oarriaga/face_classification))
-* Dat Tran ([object_detector_app](https://github.com/datitran/object_detector_app))
 * Francisco Lera (https://github.com/FranLera/simple_face_detection))
-* Marko Bjelonic ([darknet_ros package](https://github.com/leggedrobotics/darknet_ros))
 
