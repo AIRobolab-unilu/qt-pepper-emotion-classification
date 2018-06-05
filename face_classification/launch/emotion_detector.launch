@@ -1,0 +1,11 @@
+<launch>
+
+  <node name="face_classification" pkg="face_classification" type="face_classification.py" output="screen">
+    <param name="cascade_classifier" value="$(find face_classification)/config/haarcascade_frontalface_default.xml"/>
+    <param name="detection_models" value="$(find face_classification)/trained_models/detection_models/haarcascade_frontalface_default.xml"/>
+    <param name="emotion_models" value="$(find face_classification)/trained_models/emotion_models/fer2013_mini_XCEPTION.110-0.65.hdf5"/>
+    <param name="image_topic_input" value="/usb_cam/image_raw" />
+    <param name="image_topic_output" value="/face_detection/image_raw" />
+  </node>
+
+</launch>
