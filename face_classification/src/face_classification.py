@@ -79,7 +79,7 @@ class PepperEmotionListener:
 		# starting lists for calculating modes
 		self.emotion_window = []
 		self.emotion_publisher = rospy.Publisher("/qt_face/setEmotion",String,queue_size=10)
-		self.speech_publisher = rospy.Publisher("/speaker",String,queue_size=10)
+		# self.speech_publisher = rospy.Publisher("/speaker",String,queue_size=10)
 		self.emotion_msg = String()
 		self.speech_msg = String()
 
@@ -184,8 +184,8 @@ class PepperEmotionListener:
                                 self.emotion_window.append(emotion_text)
 
                 
-                                #self.emotion_msg.data = emotion_text
-                                #self.emotion_publisher.publish(emotion_msg)
+                                self.emotion_msg.data = 'ava_' + emotion_text
+                                self.emotion_publisher.publish(emotion_msg)
                                 #self.speech_msg.data = 'I see that you are ' + emotion_text
                                 #self.speech_publisher.publish(speech_msg)
 
@@ -204,6 +204,10 @@ class PepperEmotionListener:
                                     color = emotion_probability * np.asarray((255, 255, 0))
                                 elif emotion_text == 'surprise':
                                     color = emotion_probability * np.asarray((0, 255, 255))
+                                elif emotion_text == 'disgust':
+                                    color = emotion_probability * np.asarray((255, 0, 255))
+                                elif emotion_text == 'fear':
+                                    color = emotion_probability * np.asarray((255, 255, 255))
                                 else:
                                     color = emotion_probability * np.asarray((0, 255, 0))
 
