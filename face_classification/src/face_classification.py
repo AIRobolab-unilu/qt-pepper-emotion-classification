@@ -185,7 +185,7 @@ class PepperEmotionListener:
 
                 
                                 self.emotion_msg.data = 'ava_' + emotion_text
-                                self.emotion_publisher.publish(emotion_msg)
+                                self.emotion_publisher.publish(self.emotion_msg)
                                 #self.speech_msg.data = 'I see that you are ' + emotion_text
                                 #self.speech_publisher.publish(speech_msg)
 
@@ -219,7 +219,9 @@ class PepperEmotionListener:
                                         color, 0, -45, 1, 1)
                          
                     try:
-                        self.image_pub.publish(self.bridge.cv2_to_imgmsg(rgb_image, "bgr8"))
+                        bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
+                        cv2.imshow('window_frame', bgr_image)
+                        # self.image_pub.publish(self.bridge.cv2_to_imgmsg(rgb_image, "bgr8"))
                     except CvBridgeError as e:
                         print(e)
 
@@ -237,6 +239,7 @@ if __name__ == '__main__':
   rospy.loginfo("Simple Emotion Detection ...........")
   print "................................................"
   ic = PepperEmotionListener()
+  cv2.namedWindow('window_frame')
   
   
   try:

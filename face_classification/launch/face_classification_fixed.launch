@@ -1,5 +1,9 @@
 <launch>
 
+  
+  <!-- Console launch prefix -->
+  <arg name="launch_prefix" default=""/>
+
   <node name="face_classification" pkg="face_classification" type="face_classification.py" output="screen">
     <param name="cascade_classifier" value="$(find face_classification)/config/haarcascade_frontalface_default.xml"/>
     <param name="detection_models" value="$(find face_classification)/trained_models/detection_models/haarcascade_frontalface_default.xml"/>
