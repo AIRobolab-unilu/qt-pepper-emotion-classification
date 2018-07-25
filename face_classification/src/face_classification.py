@@ -219,9 +219,9 @@ class PepperEmotionListener:
                                         color, 0, -45, 1, 1)
                          
                     try:
-                        bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
-                        cv2.imshow('window_frame', bgr_image)
-                        # self.image_pub.publish(self.bridge.cv2_to_imgmsg(rgb_image, "bgr8"))
+                        self.image_pub.publish(self.bridge.cv2_to_imgmsg(rgb_image, "rgb8"))
+                        # bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
+                        # cv2.imshow('window_frame', bgr_image)
                     except CvBridgeError as e:
                         print(e)
 
@@ -229,7 +229,7 @@ class PepperEmotionListener:
                     #cv2.waitKey(3)
 
                 #try:
-                    #self.image_pub.publish(self.bridge.cv2_to_imgmsg(bgr_image, "bgr8"))
+                    #self.image_pub.publish(self.bridge.cv2_to_imgmsg(bgr_image, "rgb8"))
                 #except CvBridgeError as e:
                     #print(e)
 
@@ -239,7 +239,7 @@ if __name__ == '__main__':
   rospy.loginfo("Simple Emotion Detection ...........")
   print "................................................"
   ic = PepperEmotionListener()
-  cv2.namedWindow('window_frame')
+#   cv2.namedWindow('window_frame')
   
   
   try:
